@@ -8,8 +8,8 @@
 
 **提交前请先搜索已有 issue**，避免重复。
 
-- 🐛 **Bug** → 用 [Bug 报告模板](https://github.com/wechatacodex/wechatacodex-tunnel/issues/new?template=bug_report.yml)
-- 💡 **功能建议** → 用 [功能请求模板](https://github.com/wechatacodex/wechatacodex-tunnel/issues/new?template=feature_request.yml)
+- 🐛 **Bug** → 用 [Bug 报告模板](https://github.com/firemen20/wechatacodex-tunnel/issues/new?template=bug_report.yml)
+- 💡 **功能建议** → 用 [功能请求模板](https://github.com/firemen20/wechatacodex-tunnel/issues/new?template=feature_request.yml)
 
 **⚠️ 提交 issue 时绝对不要贴出：**
 
