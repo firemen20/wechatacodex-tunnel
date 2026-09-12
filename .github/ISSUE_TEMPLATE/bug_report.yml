@@ -1,0 +1,92 @@
+name: 🐛 Bug 报告
+description: 工具跑不通、生成的配置有问题
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > ⚠️ **提交前请把 UUID、域名、订阅链接替换成 `xxxx`。**
+        > 完整配置和 `vless://` 链接本身就是凭据，贴出来等于把节点公开。
+
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 你期望的结果 vs 实际的结果
+      placeholder: |
+        我跑 `node tools/optimize-ips.js`，期望生成配置并输出到 dist/，
+        实际报错 "找不到内核" 然后退出。
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      description: 你执行的完整命令
+      render: bash
+      placeholder: |
+        cp config.example.json config.json
+        # 编辑 config.json 填入 xxxx
+        node tools/optimize-ips.js --top 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: 完整报错输出
+      description: 请贴**完整**的终端输出，不要只贴最后一行
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: 运行环境
+      description: 操作系统 + Node 版本（`node -v`）
+      placeholder: "Android/Termux, Node v22.4.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: 用的是哪种模式
+      options:
+        - 自定义域名（TLS 443）
+        - 明文端口（不需要域名）
+        - 两种都试过
+        - 不确定
+    validations:
+      required: true
+
+  - type: input
+    id: client
+    attributes:
+      label: 客户端
+      description: 哪个客户端出的问题
+      placeholder: "Clash Meta for Android / FlClash / v2rayng / Nekoray / Hiddify"
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: 已经排查过什么
+      description: 避免我们重复问你已经做过的事
+      placeholder: |
+        - 确认过节点本身没问题（在客户端里测延迟正常）
+        - 换过 IPv4 / IPv6
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: sanity
+    attributes:
+      label: 确认
+      options:
+        - label: 我已确认报错输出中**不含**真实 UUID / Token / 域名
+          required: true
+        - label: 我已搜索过已有 issue，没有重复
+          required: true
