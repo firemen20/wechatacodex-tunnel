@@ -57,7 +57,7 @@
 ### 1. 安装
 
 ```bash
-git clone https://github.com/wechatacodex/wechatacodex-tunnel.git
+git clone https://github.com/firemen20/wechatacodex-tunnel.git
 cd wechatacodex-tunnel
 cp config.example.json config.json
 ```
