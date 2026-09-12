@@ -16,7 +16,7 @@ const yaml = require('../src/yaml-mini');
 const N = require('../src/nodes');
 
 const ROOT = path.join(__dirname, '..');
-const cfg = require('../src/config').load();
+const cfg = require('../src/config').load(null, { optional: true });
 const DIR = process.argv[2] || cfg.distDir;
 const SRC = path.join(DIR, 'ClashMeta-FlClash.yaml');
 
