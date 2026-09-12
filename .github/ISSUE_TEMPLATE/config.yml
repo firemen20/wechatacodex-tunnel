@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 先看文档
+    url: https://github.com/wechatacodex/wechatacodex-tunnel#readme
+    about: 快速开始、常见问题、原理说明都在 README 和 docs/ 里
+  - name: 🔒 安全漏洞（不要公开说细节）
+    url: https://github.com/wechatacodex/wechatacodex-tunnel/blob/main/SECURITY.md
+    about: 请按 SECURITY.md 的方式私下报告，不要在 issue 里贴凭据
