@@ -30,7 +30,7 @@
 
 请通过以下方式私下联系：
 
-- 在 [Issues](https://github.com/wechatacodex/wechatacodex-tunnel/issues) 里开一个 **不包含任何细节** 的 issue，说明「有安全问题，需要私下沟通」
+- 在 [Issues](https://github.com/firemen20/wechatacodex-tunnel/issues) 里开一个 **不包含任何细节** 的 issue，说明「有安全问题，需要私下沟通」
 - 我会回复一个私下渠道
 
 **请包含：**
