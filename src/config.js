@@ -57,10 +57,14 @@ function merge(base, over) {
   return out;
 }
 
-function load(file) {
+function load(file, opts = {}) {
   const f = file ? path.resolve(file) : DEFAULT_FILE;
 
   if (!fs.existsSync(f)) {
+    // optional 模式：某些工具（如只做格式转换的 build-subscription）并不真的需要
+    // 配置，只是拿它来定默认输出目录。找不到配置不该让它们直接退出。
+    // 踩过：CI 里没有 config.json，这些工具全崩，而本地因为有文件所以测不出来。
+    if (opts.optional) return { ...DEFAULTS, workers: [], __file: null, __optional: true };
     die(`找不到配置文件 ${f}`, `复制一份模板开始: cp ${path.relative(process.cwd(), EXAMPLE_FILE)} ${path.relative(process.cwd(), DEFAULT_FILE)}`);
   }
 
