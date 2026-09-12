@@ -48,7 +48,7 @@
 
 ## 举报
 
-可通过在 [Issues](https://github.com/wechatacodex/wechatacodex-tunnel/issues) 中开启一个不含细节的 issue 来联系维护者。
+可通过在 [Issues](https://github.com/firemen20/wechatacodex-tunnel/issues) 中开启一个不含细节的 issue 来联系维护者。
 
 所有投诉都会被及时、公正地审查和调查。维护者有义务尊重举报者的隐私和安全。
 
