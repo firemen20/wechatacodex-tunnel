@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: 自检 (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['18', '20', '22']
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: 运行自检
+        run: npm test
+
+  leak-check:
+    name: 敏感信息检查
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 这个项目里 config.json / dist/ 含节点凭据，绝不能进仓库
+      - name: 确认敏感文件未被提交
+        run: |
+          set -e
+          fail=0
+
+          for f in config.json dist data; do
+            if git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+              echo "::error::$f 被提交了，它包含节点凭据！"
+              fail=1
+            fi
+          done
+
+          # 扫真实 UUID（示例配置里的占位符除外）
+          if git grep -nIE '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' \
+               -- . ':!config.example.json' ':!package-lock.json' | grep -vE '0{8}-0{4}-4000-8000-'; then
+            echo "::error::发现疑似真实 UUID"
+            fail=1
+          fi
+
+          # 扫 API Token
+          if git grep -nIE '(cfat_|cfut_|ghp_|github_pat_)[A-Za-z0-9_]{16,}' -- . ; then
+            echo "::error::发现疑似 API Token"
+            fail=1
+          fi
+
+          if [ "$fail" -ne 0 ]; then exit 1; fi
+          echo "✅ 未发现敏感信息"
