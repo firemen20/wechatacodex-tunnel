@@ -36,12 +36,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wechatacodex/wechatacodex-tunnel.git"
+    "url": "https://github.com/firemen20/wechatacodex-tunnel.git"
   },
   "bugs": {
-    "url": "https://github.com/wechatacodex/wechatacodex-tunnel/issues"
+    "url": "https://github.com/firemen20/wechatacodex-tunnel/issues"
   },
-  "homepage": "https://github.com/wechatacodex/wechatacodex-tunnel#readme",
+  "homepage": "https://github.com/firemen20/wechatacodex-tunnel#readme",
   "dependencies": {},
   "devDependencies": {}
 }
