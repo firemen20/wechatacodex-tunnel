@@ -19,7 +19,7 @@ const N = require('../src/nodes');
 
 const ROOT = path.join(__dirname, '..');
 const SRC = process.argv[2] || path.join(cfg.distDir, 'clash-nodes.yaml');
-const cfg = require('../src/config').load();
+const cfg = require('../src/config').load(null, { optional: true });
 const OUTDIR = process.argv[3] || cfg.distDir;
 
 if (!fs.existsSync(SRC)) {
