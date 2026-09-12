@@ -1,0 +1,48 @@
+{
+  "_comment": "复制本文件为 config.json 后填写自己的信息。config.json 已被 .gitignore 排除，不会被提交。",
+
+  "account_id": "在你的 Cloudflare 后台右下角或 URL 里能找到的 Account ID",
+
+  "domain": "example.com",
+  "_domain_comment": "可选。填你已托管在 Cloudflare 的自定义域名（zone 必须是 active）。留空则走「明文端口」模式（不需要域名，但不加密）。",
+
+  "proxyip": "proxyip.cmliussss.net",
+  "_proxyip_comment": "可选。Worker 的反代IP 环境变量值。目标站点本身在 Cloudflare 上时用它中转。留空则用 Worker 内置的按机房就近地址。",
+
+  "workers": [
+    {
+      "tag": "node1",
+      "script": "my-worker-a",
+      "uuid": "00000000-0000-4000-8000-000000000001",
+      "host": "node1.example.com"
+    },
+    {
+      "tag": "node2",
+      "script": "my-worker-b",
+      "uuid": "00000000-0000-4000-8000-000000000002",
+      "host": "node2.example.com"
+    }
+  ],
+  "_workers_comment": "tag=短标识（用于节点命名） script=CF 上的 Worker 名 uuid=该 Worker 的 UUID host=绑定的自定义域名；若走明文模式则填 <worker名>.<子域>.workers.dev",
+
+  "edge_ips": [],
+  "_edge_ips_comment": "可选。留空则自动从内置候选池优选（见 tools/optimize-ips.js）。也可以手动写 [\"172.66.0.1\", \"104.26.0.1\"]",
+
+  "ports": [2052, 80, 8080],
+  "_ports_comment": "仅明文模式生效。CF 接受明文 HTTP 的端口。自定义域名模式固定走 443+TLS。",
+
+  "ips_per_worker": 3,
+  "_ips_comment": "每个 Worker 用几个优选 IP。越多越容错，但节点数 = workers × ips_per_worker × ports 会膨胀。",
+
+  "verify": {
+    "url": "https://www.gstatic.com/generate_204",
+    "timeout_ms": 8000
+  },
+
+  "client": {
+    "mixed_port": 7890,
+    "external_controller": "127.0.0.1:9090"
+  },
+
+  "output_dir": "dist"
+}
