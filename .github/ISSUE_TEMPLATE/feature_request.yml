@@ -1,0 +1,51 @@
+name: 💡 功能建议
+description: 想要新客户端支持、新协议、新的工作方式
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你想解决什么问题
+      description: 先说问题，再说方案 —— 这样我们能一起找更好的解法
+      placeholder: |
+        我想让配置在 xxx 场景下也能用，目前的问题是……
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你设想的方案
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 考虑过哪些替代方案
+      description: 以及为什么觉得它们不合适
+    validations:
+      required: false
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 建议类型
+      options:
+        - 支持新的客户端 / 格式
+        - 支持新的协议（Trojan / UDP 等）
+        - 优化 IP 选取逻辑
+        - 自动化 / 定时刷新
+        - 文档改进
+        - 其它
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: sanity
+    attributes:
+      label: 确认
+      options:
+        - label: 我已搜索过已有 issue，没有重复
+          required: true
